@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Form</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 42px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+            letter-spacing: 5px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        nav a:hover {
+            color: #00d4ff;
+            transform: scale(1.1);
+        }
+        .form-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 400px;
+            margin: 50px auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input, select, button {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        input {
+            border: 1px solid #ccc;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input:focus {
+            border-color: #00d4ff;
+            box-shadow: 0 0 5px #00d4ff;
+            outline: none;
+        }
+        select {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+        button {
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #0078a0, #00d4ff);
+            transform: scale(1.05);
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        .suggestion {
+            font-size: 12px;
+            color: #ccc;
+        }
+        .form-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            width: 90%;
+        }
+        .form-row select {
+            width: 48%;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            margin-top: 50px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="bun3.html" class="logo">
+            <img src="path/to/logo.png" alt="VANIMED - Spital Privat de Chirurgie" style="height: 60px;">
+        </a>
+        <nav>
+            <a href="donatie.html">Donații</a>
+            <a href="about.html">Despre Noi</a>
+            <a href="departments.html">Departamente</a>
+            <a href="careers.html">Cariere</a>
+            <a href="#services">Servicii</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <div class="form-container">
+        <div class="logo">
+            <img src="https://via.placeholder.com/150x50?text=VISA" alt="VISA Logo">
+        </div>
+        <form action="#" method="post">
+            <label for="cardNumber">Card Number</label>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9101 1121" required>
+            
+            <label for="cardHolder">Card Holder</label>
+            <input type="text" id="cardHolder" name="cardHolder" placeholder="John Doe" required>
+            
+            <label for="expiryMonth">Expiration Date</label>
+            <div class="form-row" style="gap: 15px; margin-bottom: 20px;">
+                <div style="flex: 1;">
+                    <label for="expiryMonth">Month</label>
+                    <select id="expiryMonth" name="expiryMonth" required>
+                        <option value="" disabled selected>MM</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                </div>
+                <div style="flex: 1.2;">
+                    <label for="expiryYear">Year</label>
+                    <select id="expiryYear" name="expiryYear" required>
+                        <option value="" disabled selected>YYYY</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                    </select>
+                </div>
+            </div>
+            
+            <label for="cvc">CVC</label>
+            <input type="text" id="cvc" name="cvc" placeholder="123" required>
+            
+            <button type="submit">Submit</button>
+            <div class="suggestion">We'll never share your card details.</div>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2023 Spitalul David Cadis. Toate drepturile rezervate.</p>
+    </footer>
+</body>
+</html>

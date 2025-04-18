@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donații - Spitalul David Cadis</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 42px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+            letter-spacing: 5px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        nav a:hover {
+            color: #00d4ff;
+            transform: scale(1.1);
+        }
+        .hero {
+            text-align: center;
+            padding: 150px 20px;
+            background: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 2s ease-in-out;
+        }
+        .hero h2 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        .hero button {
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background: #00d4ff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .hero button:hover {
+            background: #0078a0;
+        }
+        .donation-form {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .donation-form h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #00d4ff;
+        }
+        .donation-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .donation-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .donation-form input:focus {
+            border-color: #00d4ff;
+            box-shadow: 0 0 5px #00d4ff;
+            outline: none;
+        }
+        .donation-form button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            color: #fff;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .donation-form button:hover {
+            background: linear-gradient(90deg, #0078a0, #00d4ff);
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            margin-top: 50px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #ccc;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="bun3.html" class="logo">Cadis</a>
+        <nav>
+            <a href="index.html">Donații</a>
+            <a href="about.html">Despre Noi</a>
+            <a href="departments.html">Departamente</a>
+            <a href="careers.html">Cariere</a>
+            <a href="#services">Servicii</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <h2>Ajută-ne să construim viitorul</h2>
+        <p>Fiecare donație contează și ne aduce mai aproape de obiectivul nostru.</p>
+        <button onclick="window.location.href='nou.html'">Donează Acum</button>
+    </section>
+    <div class="donation-form">
+        <h1>Formular Donație</h1>
+        <form action="/procesare-donatie" method="POST">
+            <label for="name">Nume și Prenume</label>
+            <input type="text" id="name" name="name" placeholder="Nume Prenume" required>
+            
+            <label for="email">Adresă de Email</label>
+            <input type="email" id="email" name="email" placeholder="exemplu@email.com" required>
+            
+            <label for="amount">Sumă (RON)</label>
+            <input type="number" id="amount" name="amount" placeholder="Introduceți suma" required>
+            
+            <button type="submit" onclick="window.location.href='nou.html'">Continuă la Plată</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2023 Spitalul David Cadis. Toate drepturile rezervate.</p>
+    </footer>
+</body>
+</html>

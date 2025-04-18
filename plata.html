@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plată - Spitalul David Cadis</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.8);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo img {
+            height: 60px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        nav a:hover {
+            color: #00d4ff;
+            transform: scale(1.1);
+        }
+        .payment-form {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        .payment-form h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #00d4ff;
+        }
+        .payment-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .payment-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .payment-form input:focus {
+            border-color: #00d4ff;
+            box-shadow: 0 0 5px #00d4ff;
+            outline: none;
+        }
+        .payment-form .row {
+            display: flex;
+            gap: 20px;
+        }
+        .payment-form .row div {
+            flex: 1;
+        }
+        .payment-form button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            color: #fff;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .payment-form button:hover {
+            background: linear-gradient(90deg, #0078a0, #00d4ff);
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            margin-top: 50px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="bun3.html" class="logo">
+            <img src="path/to/logo.png" alt="VANIMED - Spital Privat de Chirurgie" style="height: 60px;">
+        </a>
+        <nav>
+            <a href="donatie.html">Donații</a>
+            <a href="about.html">Despre Noi</a>
+            <a href="departments.html">Departamente</a>
+            <a href="careers.html">Cariere</a>
+            <a href="#services">Servicii</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <div class="payment-form">
+        <h1>Detalii Plată</h1>
+        <form action="/procesare-plata" method="POST">
+            <label for="card-number">Număr Card</label>
+            <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required oninput="formatCardNumber(this)">
+            
+            <label for="card-name">Nume pe Card</label>
+            <input type="text" id="card-name" name="card-name" placeholder="Nume Prenume" required>
+            
+            <div class="row" style="gap: 10px; margin-bottom: 20px;">
+                <div style="flex: 1;">
+                    <label for="expiry-date">Data Expirării</label>
+                    <input type="text" id="expiry-date" name="expiry-date" placeholder="ZZ/MM/YYYY" maxlength="10" required oninput="formatExpiryDate(this)">
+                </div>
+                <div style="flex: 0.4;">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                </div>
+            </div>
+            
+            <button type="submit" onclick="window.location.href='nou.html'">Plătește Acum</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2023 Spitalul David Cadis. Toate drepturile rezervate.</p>
+    </footer>
+    <script>
+        function formatCardNumber(input) {
+            input.value = input.value
+                .replace(/\D/g, '') // Remove non-digit characters
+                .replace(/(.{4})/g, '$1 ') // Add a space every 4 digits
+                .trim(); // Remove trailing spaces
+        }
+
+        function formatExpiryDate(input) {
+            input.value = input.value
+                .replace(/\D/g, '') // Remove non-digit characters
+                .replace(/^(\d{2})(\d{2})?(\d{4})?$/, (match, p1, p2, p3) => {
+                    if (p3) return `${p1}/${p2}/${p3}`;
+                    if (p2) return `${p1}/${p2}`;
+                    return p1;
+                }) // Add '/' after 2 and 4 digits
+                .slice(0, 10); // Limit to 10 characters (ZZ/MM/YYYY)
+        }
+    </script>
+</body>
+</html>
